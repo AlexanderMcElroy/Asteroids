@@ -19,3 +19,15 @@ class Player(CircleShape):
         c = self.position - forward * self.radius + right
         return [a, b, c]
 
+    def rotate(self, dt):
+        rotation = PLAYER_TURN_SPEED * dt
+        self.rotation += rotation
+
+
+    def update(self, dt):
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_a]:
+            self.rotate(dt)
+        if keys[pygame.K_d]:
+            self.rotate(-dt)
